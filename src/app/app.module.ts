@@ -12,6 +12,10 @@ import { CommunicationsComponent } from './components/communications/communicati
 import { LhsComponent } from './components/communications/lhs/lhs.component';
 import { RhsComponent } from './components/communications/rhs/rhs.component';
 import { CommService } from './services/communications.service';
+import { CounterComponent } from './containers/counter/counter.component';
+import {StoreModule} from '@ngrx/store';
+import {StoreDevtoolsModule} from '@ngrx/store-devtools';
+import {reducers} from './reducers';
 
 @NgModule({
   declarations: [
@@ -23,11 +27,14 @@ import { CommService } from './services/communications.service';
     NavComponent,
     CommunicationsComponent,
     LhsComponent,
-    RhsComponent
+    RhsComponent,
+    CounterComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    StoreModule.forRoot(reducers),
+    StoreDevtoolsModule.instrument()
   ],
   providers: [CommService],
   bootstrap: [AppComponent]

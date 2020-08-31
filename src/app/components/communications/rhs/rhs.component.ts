@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommService } from 'src/app/services/communications.service';
+import { Observable, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-rhs',
@@ -7,13 +8,17 @@ import { CommService } from 'src/app/services/communications.service';
   styleUrls: ['./rhs.component.scss']
 })
 export class RhsComponent implements OnInit {
-  data: string;
+  data$: Observable<string>;
+  sub: Subscription;
   constructor(private service: CommService) { }
 
   ngOnInit(): void {
+    this.data$ = this.service.getData();
+    this.sub = this.service.getData().subscribe(a => console.log(a));
   }
-getData(): void{
-  this.data = this.service.getData();
 
-}
+  ngOnDestroy(): void {
+    this.sub.unsubscribe();
+
+  }
 }

@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { TodoComponent } from './containers/todo/todo.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { CommunicationsComponent } from './components/communications/communications.component';
+import { CounterComponent } from './containers/counter/counter.component';
 
 const routes: Routes = [
   {
@@ -16,6 +17,10 @@ const routes: Routes = [
   {
     path: 'communications',
     component: CommunicationsComponent
+  },
+  {
+    path: 'counter',
+    component: CounterComponent
   },
   {
     path: '**',
