@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-todo-entry',
@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./todo-entry.component.scss']
 })
 export class TodoEntryComponent implements OnInit {
+  @Output() itemAdded = new EventEmitter<string>();
 
   constructor() { }
 
@@ -15,6 +16,7 @@ export class TodoEntryComponent implements OnInit {
     // create new todo
     // do something w it
     // clear out text in input
+    this.itemAdded.emit(descriptionEl.value);
     descriptionEl.value = '';
     descriptionEl.focus();
   }
