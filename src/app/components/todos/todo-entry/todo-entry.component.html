@@ -1,1 +1,9 @@
-<p>todo-entry works!</p>
+<div class="form-group">
+  <label for="item">Item</label>
+  <input
+    #item
+    name="item"
+    class="form-control">
+  <button class="btn btn-primary"
+  (click)="add(item)">Add Item</button>
+</div>
