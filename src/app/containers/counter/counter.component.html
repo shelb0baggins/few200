@@ -9,3 +9,32 @@
 (click)="decrement()">
  -
 </button>
+<div>
+  <button class="btn btn-sm btn-danger"
+  (click)="reset()"
+  [disabled]="atZero$ | async">
+   Reset
+  </button>
+</div>
+
+<div class="btn-group"
+ role="group"
+  aria-label="Basic example"
+  >
+  <button type="button"
+    class="btn btn-primary"
+    (click)="setBy(1)"
+    [disabled]="(by$ | async) ===1"
+    >1</button>
+  <button type="button"
+    class="btn btn-secondary"
+    (click)="setBy(3)"
+    [disabled]="(by$ | async) ===3"
+   >3</button>
+  <button type="button"
+    class="btn btn-success"
+    (click)="setBy(5)"
+    [disabled]="(by$ | async) ===5"
+   >5</button>
+</div>
+
