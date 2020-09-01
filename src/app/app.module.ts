@@ -16,7 +16,8 @@ import { CounterComponent } from './containers/counter/counter.component';
 import {StoreModule} from '@ngrx/store';
 import {StoreDevtoolsModule} from '@ngrx/store-devtools';
 import {reducers} from './reducers';
-
+import { CounterEffects } from "./effects/counter.effects";
+import { EffectsModule } from "@ngrx/effects";
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,7 +35,8 @@ import {reducers} from './reducers';
     BrowserModule,
     AppRoutingModule,
     StoreModule.forRoot(reducers),
-    StoreDevtoolsModule.instrument()
+    StoreDevtoolsModule.instrument(),
+    EffectsModule.forRoot([CounterEffects])
   ],
   providers: [CommService],
   bootstrap: [AppComponent]
