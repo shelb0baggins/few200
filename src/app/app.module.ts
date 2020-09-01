@@ -16,8 +16,9 @@ import { CounterComponent } from './containers/counter/counter.component';
 import {StoreModule} from '@ngrx/store';
 import {StoreDevtoolsModule} from '@ngrx/store-devtools';
 import {reducers} from './reducers';
-import { CounterEffects } from "./effects/counter.effects";
-import { EffectsModule } from "@ngrx/effects";
+import { CounterEffects } from './effects/counter.effects';
+import { EffectsModule } from '@ngrx/effects';
+import { MediaModule } from './features/media/media.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,10 +34,11 @@ import { EffectsModule } from "@ngrx/effects";
   ],
   imports: [
     BrowserModule,
+    MediaModule,
     AppRoutingModule,
     StoreModule.forRoot(reducers),
     StoreDevtoolsModule.instrument(),
-    EffectsModule.forRoot([CounterEffects])
+    EffectsModule.forRoot([CounterEffects]),
   ],
   providers: [CommService],
   bootstrap: [AppComponent]

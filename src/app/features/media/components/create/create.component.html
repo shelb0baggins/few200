@@ -1,0 +1,39 @@
+<form [formGroup]="form" (ngSubmit)="submit()">
+  <div class="form-group">
+    <label for="title">Title</label>
+    <input class="form-control"
+           name="title"
+           formControlName="title">
+           <div class="alert alert-danger"
+          *ngIf="title.invalid && (title.dirty || title.touched)">
+          <p *ngIf="title.errors.required">Title is required.</p>
+          <p *ngIf="title.errors.maxLength">Title is too long.</p>
+        </div>
+  </div>
+  <div class="form-group">
+    <label for="recommendedBy">Recommended By</label>
+    <input class="form-control"
+           name="recommendedBy"
+           formControlName="recommendedBy">
+          <div class="alert alert-danger"
+          *ngIf="recommendedBy.invalid && (recommendedBy.dirty || recommendedBy.touched)">
+          <p *ngIf="recommendedBy.errors.required">recommendedBy is required.</p>
+          <p *ngIf="recommendedBy.errors.maxLength">recommendedBy is too long.</p>
+        </div>
+  </div>
+  <div class="form-group">
+    <label for="format">Format</label>
+    <select class="form-control"
+            name="format"
+            formControlName="format">
+            <option value=""></option>
+      <option value="book">Book</option>
+      <option value="show">Show</option>
+      <option value="movie">Movie</option>
+      <option value="game">Game</option>
+    </select>
+  </div>
+  <button type="submit"
+          class="btn btn-primary"
+          [disabled]="form.invalid">Add Item To Media Library</button>
+</form>
