@@ -6,6 +6,14 @@ import { map } from 'rxjs/operators';
 
 @Injectable()
 export class MediaAppEffects {
+
+  displayMediaAddError$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(mediaActions.addedMediaIFailure),
+      map((a) => appActions.appFeatureError({errorMessage: a.errorMessage, featureName: 'Media'}))
+    )
+  );
+
   load$ = createEffect(() =>
     this.actions$.pipe(
       ofType(appActions.appStarted),

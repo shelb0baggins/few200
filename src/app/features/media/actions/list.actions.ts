@@ -13,6 +13,15 @@ export const addedMediaItem = createAction(
   })
 );
 
+export const addedMediaItemSucceeded = createAction(
+  '[media] media item added succeeded',
+  props<{tempId: string, payload: ListEntity }>()
+);
+export const addedMediaIFailure = createAction(
+  '[media] media item added failed',
+  props<{ payload: ListEntity, errorMessage: string }>()
+);
+
 export const loadMediaData = createAction(
   '[media] media load data'
 );
