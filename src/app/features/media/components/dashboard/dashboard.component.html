@@ -1,1 +1,23 @@
-<p>dashboard works!</p>
+<header>
+  <h3>Media</h3>
+</header>
+<section>
+  <div class="alert alert-info">
+    <p>You have {{ (model$ | async)?.numOfBooks}} books.</p>
+  </div>
+</section>
+<section>
+  <div class="alert alert-info">
+    <p>You have {{ (model$ | async)?.numOfGames}} games.</p>
+  </div>
+</section>
+<section>
+  <div class="alert alert-info">
+    <p>You have {{ (model$ | async)?.numOfMovies}} movies.</p>
+  </div>
+</section>
+<section>
+  <div class="alert alert-info">
+    <p>You have {{ (model$ | async)?.numOfShows}} shows.</p>
+  </div>
+</section>
