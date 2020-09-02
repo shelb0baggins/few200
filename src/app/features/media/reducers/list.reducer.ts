@@ -25,11 +25,12 @@ const reducerFunction = createReducer(
     const tempState = adapter.removeOne(a.tempId, s);
     return adapter.addOne(a.payload, tempState);
   }),
-  on(actions.addedMediaIFailure, (s, a) => adapter.removeOne(a.payload.id, s)));
+  on(actions.addedMediaIFailure, (s, a) => adapter.removeOne(a.payload.id, s)),
+  on(actions.removedMediaItem, (s, a) => adapter.removeOne(a.payload.id, s)),
+  on(actions.makeUpperCaseTitle, (s, a) => adapter.updateOne({ id: a.payload.id, changes: {title: a.payload.title.toUpperCase()}}, s)));
+
 
 export function reducer(state: MediaState = initialState, action: Action): MediaState {
   return reducerFunction(state, action);
 }
-
-
 

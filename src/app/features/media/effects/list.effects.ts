@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import * as actions from '../actions/list.actions';
 import { environment } from '../../../environments/environments';
 import { Injectable } from '@angular/core';
-import { switchMap, map, catchError } from 'rxjs/operators';
+import { switchMap, map, catchError, filter } from 'rxjs/operators';
 import { ListEntity } from '../reducers/list.reducer';
 import { of } from 'rxjs';
 
@@ -12,6 +12,16 @@ import { of } from 'rxjs';
 
 export class ListEffects {
 
+removeItem$ = createEffect(() =>
+  this.actions$.pipe(
+    ofType(actions.removedMediaItem),
+    switchMap((item) => this.client.delete(environment.apiUrl + `media/${item.payload.id}`)
+    .pipe(
+      filter(() => false),
+      map(() => ({type: 'noop'})),
+      catchError((e) => of(actions.addedMediaIFailure({payload: item.payload, errorMessage: `Failed to delete ${item.payload.title}`})))
+    ))
+  ), {dispatch: false});
 
   addItem$ = createEffect(() =>
   this.actions$.pipe(
@@ -23,7 +33,7 @@ export class ListEffects {
     }).pipe(
       map(payload => actions.addedMediaItemSucceeded({payload, tempId: originalAction.payload.id})),
       catchError(() => of(actions.addedMediaIFailure({payload: originalAction.payload, errorMessage: `Could not Add ${originalAction.payload.title}`})))
-    ))), {dispatch: false}
+    ))), {dispatch: true}
   );
     // When we get a loadListData -> go to the API -> (loadListDataSucceeded | loadListDataFailed)
   loadData$ = createEffect(() =>

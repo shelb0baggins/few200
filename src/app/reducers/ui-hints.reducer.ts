@@ -1,4 +1,4 @@
-import { Action, createReducer, on } from "@ngrx/store";
+import { Action, createReducer, on } from '@ngrx/store';
 import * as actions from '../actions/app.actions';
 export interface UiHintsState {
   hasError: boolean;
@@ -12,8 +12,7 @@ const initialState: UiHintsState = {
 
 const reducerFunction = createReducer(
   initialState,
-  on(actions.appFeatureError, (s, a) => ({...s, hasError: true, error: a.errorMessage
-  })),
+  on(actions.appFeatureError, (s, a) => ({...s, hasError: true, error: a.errorMessage})),
   on(actions.clearAppFeatureError, (s, a) => ({ ...s, hasError: false, error: null }))
   );
 

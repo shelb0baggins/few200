@@ -21,7 +21,7 @@ export const selectCurrentCount = createSelector(
 
 export const selectHasError = createSelector(
   selectUiHintsBranch,
-  f => f.hasError
+  b => b.hasError
 );
 
 
