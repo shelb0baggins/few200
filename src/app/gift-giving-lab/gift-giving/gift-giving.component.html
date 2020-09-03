@@ -1,0 +1,22 @@
+  <nav class="nav nav-pills mb-3">
+    <a [routerLink]="['dashboard']"
+    [routerLinkActive]="['active']"
+    class="nav-link"
+    >Gift Dashboard</a>
+    <a [routerLink]="['new-recipient']"
+    [routerLinkActive]="['active']"
+    class="nav-link"
+    >Create New Recipient</a>
+    <a [routerLink]="['past-holiday']"
+    [routerLinkActive]="['active']"
+    class="nav-link">
+  Past Holidays</a>
+    <a [routerLink]="['upcoming-holiday']"
+    [routerLinkActive]="['active']"
+    class="nav-link">
+  Upcoming Holidays</a>
+  </nav>
+  <div class="col">
+    <router-outlet></router-outlet>
+  </div>
+

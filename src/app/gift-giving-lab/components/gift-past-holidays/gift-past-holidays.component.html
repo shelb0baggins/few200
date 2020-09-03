@@ -1,0 +1,29 @@
+<div class="alert alert-info"
+     *ngIf="!gifts$">
+  <h3>You have no gifts! You should add some!</h3>
+</div>
+
+<div class="card"
+*ngFor="let gift of gifts">
+  <div class="card-body"
+  *ngIf="gift.date < currentDate">
+    <h5 class="card-title"
+    >{{gift.recipient}} celebrates {{gift.holidayType}}</h5>
+
+    <h6 class="card-subtitle mb-2 text-muted">on {{gift.date | date : "mediumDate"}}</h6>
+    <div *ngIf="gift.needsGift">
+      <label for="needsGift">Gift?</label>
+      <input type="checkbox"
+      name="needsGift"
+      id="needsGift">
+
+    </div>
+    <div *ngIf="gift.needsCard">
+    <label for="needsCard">Card?</label>
+      <input type="checkbox"
+      name="needsCard"
+      id="needsCard">
+      </div>
+  </div>
+</div>
+

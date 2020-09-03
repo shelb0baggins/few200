@@ -19,6 +19,7 @@ import {reducers} from './reducers';
 import { CounterEffects } from './effects/counter.effects';
 import { EffectsModule } from '@ngrx/effects';
 import { MediaModule } from './features/media/media.module';
+import {GiftGivingModule} from './gift-giving-lab/gift-giving/gift-giving.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,10 +32,11 @@ import { MediaModule } from './features/media/media.module';
     LhsComponent,
     RhsComponent,
     CounterComponent
-  ],
+    ],
   imports: [
     BrowserModule,
     MediaModule,
+    GiftGivingModule,
     AppRoutingModule,
     StoreModule.forRoot(reducers),
     StoreDevtoolsModule.instrument(),

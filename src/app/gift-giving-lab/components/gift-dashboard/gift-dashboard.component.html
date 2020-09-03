@@ -1,0 +1,17 @@
+<header>
+  <h3>Gifts</h3>
+  <h6>Select an option from the left.</h6>
+</header>
+<section>
+  <div class="alert alert-info">
+    <p>You have {{ (model$ | async)?.numOfHolidays}} upcoming holidays.</p>
+  </div>
+</section>
+<section>
+  <div class="alert alert-info">
+    <p>You have {{ (model$ | async)?.numOfCards}} cards to buy & {{ (model$ | async)?.numOfGifts}}
+       gifts to buy.</p>
+  </div>
+</section>
+
+
