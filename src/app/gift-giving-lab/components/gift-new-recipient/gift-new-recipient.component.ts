@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormGroup, AbstractControl } from '@angular/forms';
-import { MediaState } from 'src/app/features/media/reducers/list.reducer';
 import { Store } from '@ngrx/store';
 import { GiftState } from '../../reducers/list.reducer';
-import { addedGiftItem } from '../../actions/list.actions';
 import * as actions from '../../actions/list.actions';
 
 @Component({
@@ -30,7 +28,6 @@ export class GiftNewRecipientComponent implements OnInit {
   get needsCard(): AbstractControl {return this.form.get('needsCard'); }
   get needsGift(): AbstractControl {return this.form.get('needsGift'); }
   get holidayType(): AbstractControl {return this.form.get('holidayType'); }
-
 
   submit(): void {
     this.store.dispatch(actions.addedGiftItem(this.form.value));

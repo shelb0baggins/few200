@@ -40,11 +40,11 @@ const selectGiftListUnfiltered = createSelector(
     if (upcoming.date > new Date()) {
       return 1;
     }
-    if (upcoming.date < new Date()) {
+    if (past.date < new Date()) {
       return -1;
     }
     return 0;
-  }).map(r => ({ ...r, isTemporary: r.id.startsWith('TEMP') }))] as models.Holiday[]
+  }).map(r => ({ ...r }))] as models.Holiday[]
 );
 
 export const selectDashboardModel = createSelector(
@@ -54,7 +54,7 @@ export const selectDashboardModel = createSelector(
       numOfGifts: m.filter(b => b.needsGift).length,
       numOfCards: m.filter(b => b.needsCard).length,
       numOfHolidays: m.filter(b => b.date > new Date()).length
-    } as unknown as models.GiftDashboard;
+    } as models.GiftDashboard;
   }
 );
 

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { Holiday } from '../../models/holidays';
 import { Store, select } from '@ngrx/store';
 import { GiftState, selectGiftList } from '../../reducers/index';
@@ -19,13 +19,15 @@ export class GiftPastHolidaysComponent implements OnInit {
   //   { id: '1', recipient: 'Jeff Gonzalez ', holidayType: 'Birthday', date: new Date('Apr 20, 2020'), needsCard: true, needsGift: false }
   // ];
 
-  constructor(private store: Store<GiftState>) { }
+  constructor(private store: Store<GiftState>, private changeDetector: ChangeDetectorRef) { }
 
   ngOnInit(): void {
     this.gifts$ = this.store.pipe(
       select(selectGiftList)
     );
-    this.gifts$.subscribe(a => this.gifts = a);
+    this.gifts$.subscribe(a => {this.gifts = a;
+      this.changeDetector.markForCheck();
+    });
   }
 
 }

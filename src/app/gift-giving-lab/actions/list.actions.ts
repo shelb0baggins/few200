@@ -1,5 +1,6 @@
 import { createAction, props } from '@ngrx/store';
 import { ListEntity } from '../reducers/list.reducer';
+import { Holiday } from '../models';
 let currentId = 0;
 
 export const addedGiftItem = createAction(
@@ -9,9 +10,9 @@ export const addedGiftItem = createAction(
     holidayType: string, date: Date,
     needsGift: boolean, needsCard: boolean }) => ({
     payload: {
-        recipient, date, needsCard, needsGift, holidayType,
-        id: 'TEMP' + currentId++
-      } as ListEntity
+        recipient, date: new Date(date), needsCard, needsGift, holidayType,
+        id: (currentId++).toString()
+      } as Holiday
   })
 );
 
@@ -31,7 +32,7 @@ export const loadGiftData = createAction(
 
 export const loadGiftDataSucceeded = createAction(
   '[Gift] loading Gift data succeeded',
-  props<{ payload: ListEntity[] }>()
+  props<{ payload: Holiday[] }>()
 );
 
 export const loadGiftDataFailed = createAction(

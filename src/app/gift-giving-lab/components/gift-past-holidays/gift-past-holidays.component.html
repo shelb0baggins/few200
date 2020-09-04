@@ -15,14 +15,16 @@
       <label for="needsGift">Gift?</label>
       <input type="checkbox"
       name="needsGift"
-      id="needsGift">
+      id="needsGift"
+      [checked]="gift.needsCard">
 
     </div>
     <div *ngIf="gift.needsCard">
     <label for="needsCard">Card?</label>
       <input type="checkbox"
       name="needsCard"
-      id="needsCard">
+      id="needsCard"
+      [checked]="gift.needsCard">
       </div>
   </div>
 </div>
